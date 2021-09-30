@@ -7,6 +7,7 @@ package baseline;
 
 import java.util.Scanner;
 
+
 public class Solution24 {
     //create a function called anagram which takes 2 strings
     // reverses string 2 and compares
@@ -22,7 +23,7 @@ public class Solution24 {
 
 
     public static void main(String[] args) {
-        System.out.println("Enter two strings and I'll tell you if they are anagrams:");
+
         System.out.print("Enter the first string: ");
         //input data as strings
         Scanner sc = new Scanner(System.in);
@@ -32,7 +33,7 @@ public class Solution24 {
         String b = sc.nextLine();
         // call anagram function and print result
 
-        if (isAnagram(a,b ) == true) {
+        if (isAnagram(a,b) == true) {
             System.out.println("\"" + a + "\" and  \"" + b + "\" are anagrams.");
         }
         else
