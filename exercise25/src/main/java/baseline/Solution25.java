@@ -17,7 +17,7 @@ public class Solution25 {
     // if char count + num is > 8 && num > 1 && specialchar > 1 return very strong
 
 
-    static public String passwordValidator(String password) {
+    public static String passwordValidator(String password) {
         int charCount = 0;
         int numCount = 0;
         int specCount = 0;
