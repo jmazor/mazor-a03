@@ -19,6 +19,6 @@ class Solution27Test {
 
     @Test
     void validateInputEmployeeID() {
-        assertEquals("The employee ID must be in the format of AA-1234.\n   ", Solution27.validateInput("Justin", "Mazor", "33428", "AA1234"));
+        assertEquals("The employee ID must be in the format of AA-1234.\n", Solution27.validateInput("Justin", "Mazor", "33428", "AA1234"));
     }
 }

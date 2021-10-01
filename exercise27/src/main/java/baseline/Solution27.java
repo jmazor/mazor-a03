@@ -18,33 +18,44 @@ public class Solution27 {
     // zipcode must contain only numbers and be 5 digits
 
     // return concated string
-    public static String validateInput (String firstName, String lastname, String zipCode, String employeeID) {
-        String ret = "";
+
+    public static String validateFirstName(String firstName, String ret) {
         if (firstName.isEmpty()) {
             ret = ret.concat("The first name must be filled in.\n");
         }
         if (firstName.length() <= 2) {
             ret = ret.concat("The first name must be at least 2 characters long.\n");
         }
-        if (lastname.isEmpty()) {
+        return ret;
+    }
+
+    public static String validatelastName(String lastName, String ret) {
+        if (lastName.isEmpty()) {
             ret = ret.concat("The last name must be filled in.\n");
         }
-        if (lastname.length() <= 2) {
+        if (lastName.length() <= 2) {
             ret = ret.concat("The last name must be at least 2 characters long.\n");
         }
+        return ret;
+    }
 
-
+    public static String validateEmployeeID(String employeeID, String ret) {
+        String employeeFormat = "The employee ID must be in the format of AA-1234.\n";
         if (employeeID.length() != 7)
-            ret = ret.concat("The employee ID must be in the format of AA-1234.\n");
-        // Ensures that char 0 and 1 are letters
+            ret = ret.concat(employeeFormat);
+            // Ensures that char 0 and 1 are letters
         else if (!Character.isLetter(employeeID.charAt(0)) || (!Character.isLetter(employeeID.charAt(1)))) {
-            ret = ret.concat("The employee ID must be in the format of AA-1234.\n");
+            ret = ret.concat(employeeFormat);
         } else if (employeeID.charAt(2) != '-') {
-            ret = ret.concat("The employee ID must be in the format of AA-1234.\n");
-        // Ensures that char 3 4 6 and 6 are Numbers
+            ret = ret.concat(employeeFormat);
+            // Ensures that char 3 4 6 and 6 are Numbers
         } else if (!Character.isDigit(employeeID.charAt(3)) || !Character.isDigit(employeeID.charAt(4)) || !Character.isDigit(employeeID.charAt(5)) || !Character.isDigit(employeeID.charAt(6))) {
-            ret = ret.concat("The employee ID must be in the format of AA-1234.\n");
+            ret = ret.concat(employeeFormat);
         }
+        return ret;
+    }
+
+    public static String validateZipCode(String zipCode, String ret) {
         if (zipCode.length() != 5) {
             ret = ret.concat("The Zip code must be a 5 digit number.\n");
         }
@@ -56,6 +67,15 @@ public class Solution27 {
                 }
             }
         }
+        return ret;
+    }
+
+    public static String validateInput (String firstName, String lastName, String zipCode, String employeeID) {
+        String ret = "";
+        ret = validateFirstName(firstName, ret);
+        ret = validatelastName(lastName, ret);
+        ret = validateEmployeeID(employeeID, ret);
+        ret = validateZipCode(zipCode, ret);
 
         if (ret.isEmpty())
             ret = "There were no errors found.";
