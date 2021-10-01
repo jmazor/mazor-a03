@@ -8,10 +8,7 @@ class Solution26Test {
 
     @Test
     void main() {
-        Solution26.PaymentCalculator card = new Solution26.PaymentCalculator();
-        card.cardBalance = 5000;
-        card.setAPR(12);
-        card.monthlyPayment = 100;
+        Solution26.PaymentCalculator card = new Solution26.PaymentCalculator(12, 5000, 100);
         assertEquals(70, card.calculateMonthsUntilPaidOff());
     }
 }

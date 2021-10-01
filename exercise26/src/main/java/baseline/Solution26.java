@@ -5,8 +5,6 @@ package baseline;
  *  Copyright 2021 Justin Mazor
  */
 
-
-import java.lang.Math;
 import java.util.Scanner;
 
 public class Solution26 {
@@ -17,17 +15,16 @@ public class Solution26 {
     // Class has one public method called calculate MonthsUntilPaidOff
     // Takes no paramters and does the formula
     public static class PaymentCalculator {
-        double dailyRate;
-        double cardBalance;
-        double monthlyPayment;
+        private double dailyRate;
+        private double cardBalance;
+        private double monthlyPayment;
 
-        public PaymentCalculator () {
-
+        public PaymentCalculator(double dailyRate, double cardBalance, double monthlyPayment) {
+            this.dailyRate = dailyRate/100.0/365.0;
+            this.cardBalance = cardBalance;
+            this.monthlyPayment = monthlyPayment;
         }
 
-        public void setAPR (double x) {
-            this.dailyRate = (x/100.0)/365;
-        }
 
         public int calculateMonthsUntilPaidOff() {
             double ret = ((-1.0/30.0) * (Math.log(1 + cardBalance/monthlyPayment * (1 - Math.pow(1 + dailyRate, 30)))) / (Math.log(1+ dailyRate)));
@@ -36,6 +33,16 @@ public class Solution26 {
         }
     }
 
+    public static PaymentCalculator initPaymentCalc() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("What is your balance? ");
+        double cardBalance = sc.nextDouble();
+        System.out.print("What is the APR on the card (as a percent)? ");
+        double apr = sc.nextDouble();
+        System.out.print("What is the monthly payment you can make? ");
+        double monthlyPayment= sc.nextDouble();
+        return new PaymentCalculator(apr, cardBalance, monthlyPayment);
+    }
 
     public static void main(String[] args) {
         // init a PaymentCalculator object called card
@@ -43,20 +50,8 @@ public class Solution26 {
         // balance
         // apr
         // monthly payment
-        Scanner sc = new Scanner(System.in);
-        PaymentCalculator card = new PaymentCalculator();
-        System.out.print("What is your balance? ");
-        card.cardBalance = sc.nextDouble();
-        System.out.print("What is the APR on the card (as a percent)? ");
-        card.setAPR(sc.nextDouble());
-        System.out.print("What is the monthly payment you can make? ");
-        card.monthlyPayment = sc.nextDouble();
+        PaymentCalculator card = initPaymentCalc();
         // call card.MonthsUntilPaidOff
         System.out.println("It will take you " + card.calculateMonthsUntilPaidOff() + " months to pay off this card.");
-
-
-
     }
-
-
 }
