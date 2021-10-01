@@ -33,6 +33,7 @@ public class Solution27 {
             ret = ret.concat("The last name must be at least 2 characters long.\n");
         }
 
+
         if (employeeID.length() != 7)
             ret = ret.concat("The employee ID must be in the format of AA-1234.\n");
         // Ensures that char 0 and 1 are letters

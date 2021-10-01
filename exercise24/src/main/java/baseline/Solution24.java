@@ -12,12 +12,9 @@ public class Solution24 {
     //create a function called anagram which takes 2 strings
     // reverses string 2 and compares
     // if equal returns true
-    static public boolean isAnagram(String a, String b) {
+    public static boolean isAnagram(String a, String b) {
         b =  new StringBuilder(b).reverse().toString();
-        if (a.equals(b))
-            return true;
-        else
-            return false;
+        return a.equals(b);
     }
 
 
@@ -33,7 +30,7 @@ public class Solution24 {
         String b = sc.nextLine();
         // call anagram function and print result
 
-        if (isAnagram(a,b) == true) {
+        if (isAnagram(a,b)) {
             System.out.println("\"" + a + "\" and  \"" + b + "\" are anagrams.");
         }
         else
