@@ -46,10 +46,7 @@ public class Solution26 {
 
     public static void main(String[] args) {
         // init a PaymentCalculator object called card
-        // Ask for and set
-        // balance
-        // apr
-        // monthly payment
+        // Ask for and set balance apr monthly payment
         PaymentCalculator card = initPaymentCalc();
         // call card.MonthsUntilPaidOff
         System.out.println("It will take you " + card.calculateMonthsUntilPaidOff() + " months to pay off this card.");
