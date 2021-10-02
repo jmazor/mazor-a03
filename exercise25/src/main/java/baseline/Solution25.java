@@ -9,18 +9,14 @@ import java.util.Scanner;
 public class Solution25 {
 
     // passwordValidator Function
-    // initialize char count number count and special char count
-    // loop through each char of string
-    // if charcount < 8 and num == 0 return very weak
-    // if char count < 8 return weak
-    // if char count + num is > 8 && num > 1 return strong
-    // if char count + num is > 8 && num > 1 && specialchar > 1 return very strong
 
 
     public static String passwordValidator(String password) {
+        // initialize char count number count and special char count
         int charCount = 0;
         int numCount = 0;
         int specCount = 0;
+        // loop through each char of string
         for (int i  = 0; i != password.length(); ++i) {
             if (Character.isDigit(password.charAt(i))) {
                 numCount++;
@@ -31,13 +27,14 @@ public class Solution25 {
             }
         }
         int total = charCount + numCount + specCount;
+        // if charcount < 8 and num == 0 return very weak
         if (total < 8 && charCount == 0 && specCount == 0) {
             return "very weak";
-        } else if (total < 8 && numCount == 0 && specCount == 0) {
+        } else if (total < 8 && numCount == 0 && specCount == 0) {     // if char count < 8 return weak
             return "weak";
-        } else if (total >= 8 && numCount != 1 && specCount != 0 && charCount != 0) {
+        } else if (total >= 8 && numCount != 1 && specCount != 0 && charCount != 0) { // if char count + num is > 8 && num > 1 return strong
             return "very strong";
-        } else if (total >= 8 && numCount >= 1 && charCount != 0) {
+        } else if (total >= 8 && numCount >= 1 && charCount != 0) {  // if char count + num is > 8 && num > 1 && specialchar > 1 return very strong
             return "strong";
         } else {
             return "unknown strength";

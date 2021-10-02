@@ -11,7 +11,6 @@ public class Solution26 {
 
     // create a class called PaymentCalculator
     // Class has 3 private variables APR  (as percentage) Balance and Monthly payment
-
     // Class has one public method called calculate MonthsUntilPaidOff
     // Takes no paramters and does the formula
     public static class PaymentCalculator {
@@ -19,18 +18,26 @@ public class Solution26 {
         private double cardBalance;
         private double monthlyPayment;
 
+        // class constructor inits private values
         public PaymentCalculator(double dailyRate, double cardBalance, double monthlyPayment) {
-            this.dailyRate = dailyRate/100.0/365.0;
-            this.cardBalance = cardBalance;
-            this.monthlyPayment = monthlyPayment;
+            this.dailyRate = (dailyRate/100.0/365.0);
+            this.cardBalance = roundCent(cardBalance);
+            this.monthlyPayment = roundCent(monthlyPayment);
         }
 
 
         public int calculateMonthsUntilPaidOff() {
             double ret = ((-1.0/30.0) * (Math.log(1 + cardBalance/monthlyPayment * (1 - Math.pow(1 + dailyRate, 30)))) / (Math.log(1+ dailyRate)));
-            ret += .999999999999999;
+            ret += .999999999;
             return (int)ret;
         }
+    }
+
+    public static double roundCent(double x) {
+        x *= 100;
+        x += .9999999999;
+        x = (int)x;
+        return  x/100.0;
     }
 
     public static PaymentCalculator initPaymentCalc() {

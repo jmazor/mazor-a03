@@ -7,16 +7,16 @@ package baseline;
 
 public class Solution30 {
 
-    //printTable method
+    // printTable method
     // nested for loops
     // both loops 1-12
-    // inside loop multiplies and prints both counter values
-    // print new line when inside loop ends
     public static void printTable() {
         for (int i = 1; i != 13; ++i) {
             for (int y = 1; y!= 13; ++y) {
+                // inside loop multiplies and prints both counter values
                 System.out.printf(" %3d ", i*y);
             }
+            // print new line when inside loop ends
             System.out.println();
         }
     }
