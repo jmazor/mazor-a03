@@ -37,7 +37,7 @@ public class Solution37 {
             }
         }
     }
-    
+
     public static String getPassword(int numNumbers, int numSpec, int numLetters, Random rand) {
         // init string ret
         String password = "";
@@ -54,7 +54,7 @@ public class Solution37 {
             String test = printThis.get(rand.nextInt(printThis.size()));
             // if test = numNumbers
             switch (test) {
-                case NUMBERS:
+                case NUMBERS -> {
                     if (numNumbers <= 0) {
                         // removeEntry(numNumbers)
                         removeEntry(printThis, NUMBERS);
@@ -65,18 +65,17 @@ public class Solution37 {
                     // call String ret = concat.getNum(rand)
                     password = password.concat(numList.get(rand.nextInt(numList.size())));
 
-                    // decrease numCount
+                    // decrease numCountCharacter.isLetter(password.charAt(i))
                     numNumbers--;
-                    // if numCount equals 0
-                    break;
-
-
-                case LETTERS:
+                }
+                // if numCount equals 0
+                case LETTERS -> {
                     // if test = numLetters
                     // if numLetter equals 0
-                    //remove entery numLetters
+                    //remove entry numLetters
                     if (numLetters <= 0) {
                         removeEntry(printThis, LETTERS);
+                        // SONARLINT WONT LET ME JUST USE AN ELSE
                         break;
                     }
                     // call String ret = concat.getLetter(rand)
@@ -85,30 +84,26 @@ public class Solution37 {
                     if (rand.nextInt(2) == 1) {
                         letter = letter.toUpperCase();
                     }
-
                     password = password.concat(letter);
                     // decrease numLetter
                     numLetters--;
-
-                    break;
+                }
                 // if test = numSpec
-                case SPECIAL:
+                case SPECIAL -> {
                     // removeEntry(numSpec)
                     if (numSpec <= 0) {
                         removeEntry(printThis, SPECIAL);
+                        // SONARLINT WONT LET ME JUST USE AN ELSE
                         break;
                     }
                     password = password.concat(specialCharList.get(rand.nextInt(specialCharList.size())));
                     // call String ret = concat.getSpec(rand)
                     // decrease numspec
                     numSpec--;
-                    // if numspec equals 0
+                }
+                // if numspec equals 0
 
-                    break;
-
-                default:
-                    System.out.println("Error");
-
+                default -> System.out.println("Error");
             }
         }
         return password;
