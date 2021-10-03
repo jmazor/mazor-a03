@@ -22,17 +22,6 @@ public class Solution37 {
         return numLetters;
     }
 
-    public static void removeEntry(List<String> list, String entry) {
-        // loop through array
-        for (int i = 0; i != list.size(); ++i) {
-            // test each value at index is equal to employee
-            if (list.get(i).equals(entry)) {
-                list.remove(i);
-                break;
-            }
-        }
-    }
-
 
     public static String getLetters(int numLetters, Random rand) {
         final ArrayList<String> letterList = new ArrayList<>(Arrays.asList("a", "b", "c", "d", "e", "f", "g", "h", "i",
