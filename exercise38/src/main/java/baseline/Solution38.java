@@ -5,39 +5,97 @@ package baseline;
  *  Copyright 2021 Justin Mazor
  */
 
+import java.util.Scanner;
+
 public class Solution38 {
 
-    public static int[] getInput() {
+    public static class MyArray {
+        private int[] array = new int[0];
+        private int size = 0;
+
+
+        public int[] getArray() {
+            return array;
+        }
+
+        public int get(int i) {
+            return array[i];
+        }
+
+        public int getSize() {
+            return size;
+        }
+
+        public void addToArray(int x) {
+            // create a new array of size n++
+            int[] newArray = new int[size + 1];
+
+            for (int i = 0; i < size; i++)
+                newArray[i] = array[i];
+
+            newArray[size] = x;
+            array = newArray;
+            ++size;
+        }
+
+        public void printArray() {
+            for (int i = 0; i != size; ++i) {
+                if (i == size - 1)
+                    System.out.println(array[i] + ".");
+                else
+                    System.out.print(array[i] + " ");
+
+            }
+        }
+    }
+
+
+
+    public static MyArray getInput() {
         //get next line
+        MyArray numbers = new MyArray();
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter a list of numbers, separated by spaces:");
+        String input = sc.nextLine();
+        String[] temp = input.split(" ");
 
         // for every item in line
-        // if " " ignore
-        // if !num return error and exit
-        // if num store in array
+        for (String num: temp){
+            try  {
+                int x = Integer.parseInt(num);
+                numbers.addToArray(x);
+            } catch (Exception e) {
+                System.out.println("Invalid Input. Please Try Again");
+                System.exit(0);
 
-        //return array
+            }
+        }
+        return numbers;
     }
 
-    public static int[] filterEvenNumber() {
-        // for every item in error
-
+    public static MyArray filterEvenNumber(MyArray unfilteredArray) {
         // init new array
-
+        MyArray evenArray = new MyArray();
         // test if num % 2 == 0
-        // if true store
-        // if not next
-
+        for (int i = 0; i != unfilteredArray.getSize(); ++i) {
+            if (unfilteredArray.get(i) % 2 == 0 && unfilteredArray.get(i) != 0)
+                evenArray.addToArray(unfilteredArray.get(i));
+        }
 
         //return array
+        return evenArray;
     }
+
 
     public static void main(String[] args) {
 
         //call getInput
-
+        MyArray numbers = getInput();
         //call filterEvenNumber
-
+        numbers = filterEvenNumber(numbers);
         // print array
+        System.out.print("The even numbers are ");
+        numbers.printArray();
 
     }
 }
